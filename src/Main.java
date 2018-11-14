@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         String[] leftPart =  {"S","S","Q","Q"};//"S","AD","F","F","Cb","AB","bBA","CB","Ab","bCD"};
-        String[] rightPart = {"bQ","accb","cS","cB"};//"aaCFD","D","AFB","AB","bC","bBA","C","bA","eps"};
+        String[] rightPart = {"bQ","accb","cS","c"};//"aaCFD","D","AFB","AB","bC","bBA","C","bA","eps"};
 
 
 
@@ -32,8 +32,8 @@ public class Main {
             for (int i = 0; i < rightPart.length; i++) {
                 boolean k = checkOnContentRule(leftPart[i],leftPart,rightPart);
                 //Проверка на левое выравнивание
-                if ((checkOnNonTerminal(rightPart[i].charAt(0)) && checkOnTerminal(rightPart[i].charAt(rightPart[i].length()-1))
-                        && k )||(checkOnTerminalString(rightPart[i]))) {
+                if ((checkOnNonTerminal(rightPart[i].charAt(0)) & checkOnTerminal(rightPart[i].charAt(rightPart[i].length()-1))
+                        & k )||(checkOnTerminalString(rightPart[i]) &k) ) {
                     indType = 3;
                 }
                 else {
@@ -45,8 +45,8 @@ public class Main {
                 for (int i = 0; i < rightPart.length; i++) {
                     boolean k = checkOnContentRule(leftPart[i],leftPart,rightPart);
                     //Проверка на правое выравнивание
-                    if ((checkOnNonTerminal( rightPart[i].charAt(rightPart[i].length()-1) ) && checkOnTerminal(rightPart[i].charAt(0))
-                            && k) ||(checkOnTerminalString(rightPart[i]))) {
+                    if ((checkOnNonTerminal( rightPart[i].charAt(rightPart[i].length()-1) ) & checkOnTerminal(rightPart[i].charAt(0))
+                            & k) ||(checkOnTerminalString(rightPart[i]) & k)) {
                         indType = 4;
                     }
                     else {
